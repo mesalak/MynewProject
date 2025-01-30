@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هامستر كومبات</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2">
+    <link rel="icon" type="image/svg+xml" href="icon-192.svg">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+</head>
+<body>
+    <div id="app" class="game-container" role="main">
+        <div class="header" role="banner">
+            <div class="user-info">
+                <img src="hamster-avatar.svg" alt="صورة الهامستر" class="avatar" role="img">
+                <div class="user-stats">
+                    <h2 id="username" class="username">لاعب الهامستر</h2>
+                    <div class="coins" role="status" aria-live="polite">
+                        <span id="coinBalance">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle-section">
+            <div class="middle-section-top"></div>
+            <div class="middle-section-bottom"></div>
+        </div>
+        <div id="tapPage" class="page active">
+            <div class="game-area">
+                <div id="hamsterCharacter" class="hamster-character">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="hamster-svg">
+                        <!-- Main body -->
+                        <circle cx="100" cy="100" r="60" fill="#FFA500"/>
+                        <!-- Traditional Arabic headwear -->
+                        <path d="M40,80 Q100,40 160,80" fill="#8B0000"/>
+                        <path d="M45,82 Q100,45 155,82" fill="#A52A2A"/>
+                        <!-- Eyes -->
+                        <circle cx="80" cy="80" r="8" fill="black"/>
+                        <circle cx="120" cy="80" r="8" fill="black"/>
+                        <!-- Enhanced beard and smile -->
+                        <path d="M85,110 Q100,125 115,110" fill="none" stroke="black" stroke-width="3"/>
+                        <path d="M60,105 Q100,135 140,105" fill="#4A3000" stroke="#4A3000" stroke-width="4"/>
+                        <path d="M65,108 Q100,145 135,108" fill="#4A3000" stroke="#4A3000" stroke-width="3"/>
+                        <!-- Victory/Peace sign hand -->
+                        <path d="M70,140 L85,100 L100,140 M85,100 L85,140" fill="none" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <button id="tapButton" class="tap-button">انقر</button>
+            </div>
+        </div>
+        <div id="upgradesPage" class="page">
+            <div class="upgrades-section">
+                <h3>الترقيات</h3>
+                <div id="upgradesList" class="upgrades-list">
+                    <!-- Upgrades will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+        <div id="questionsPage" class="page">
+            <div class="questions-section">
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="math">رياضيات</button>
+                    <button class="category-tab" data-category="religious">دينية</button>
+                    <button class="category-tab" data-category="general">معلومات عامة</button>
+                </div>
+                <div id="mathQuestions" class="question-category active">
+                    <div class="question-item" data-question-id="math1">
+                        <h4>كم يساوي 7 × 8؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="false">54</button>
+                            <button class="answer-btn" data-correct="true">56</button>
+                            <button class="answer-btn" data-correct="false">58</button>
+                            <button class="answer-btn" data-correct="false">60</button>
+                        </div>
+                    </div>
+                    <div class="question-item" data-question-id="math2">
+                        <h4>كم يساوي 12 + 15؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="false">25</button>
+                            <button class="answer-btn" data-correct="true">27</button>
+                            <button class="answer-btn" data-correct="false">28</button>
+                            <button class="answer-btn" data-correct="false">29</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="religiousQuestions" class="question-category">
+                    <div class="question-item" data-question-id="religious1">
+                        <h4>كم عدد ركعات صلاة الظهر؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="true">4</button>
+                            <button class="answer-btn" data-correct="false">3</button>
+                            <button class="answer-btn" data-correct="false">2</button>
+                            <button class="answer-btn" data-correct="false">5</button>
+                        </div>
+                    </div>
+                    <div class="question-item" data-question-id="religious2">
+                        <h4>كم عدد أركان الإسلام؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="true">5</button>
+                            <button class="answer-btn" data-correct="false">4</button>
+                            <button class="answer-btn" data-correct="false">6</button>
+                            <button class="answer-btn" data-correct="false">3</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="generalQuestions" class="question-category">
+                    <div class="question-item" data-question-id="general1">
+                        <h4>ما هي عاصمة المملكة العربية السعودية؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="true">الرياض</button>
+                            <button class="answer-btn" data-correct="false">جدة</button>
+                            <button class="answer-btn" data-correct="false">مكة</button>
+                            <button class="answer-btn" data-correct="false">المدينة</button>
+                        </div>
+                    </div>
+                    <div class="question-item" data-question-id="general2">
+                        <h4>ما هو أكبر محيط في العالم؟</h4>
+                        <div class="answers">
+                            <button class="answer-btn" data-correct="true">المحيط الهادئ</button>
+                            <button class="answer-btn" data-correct="false">المحيط الأطلسي</button>
+                            <button class="answer-btn" data-correct="false">المحيط الهندي</button>
+                            <button class="answer-btn" data-correct="false">المحيط المتجمد الشمالي</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <button class="nav-button" data-page="tapPage">نقر</button>
+            <button class="nav-button" data-page="upgradesPage">ترقيات</button>
+            <button class="nav-button" data-page="questionsPage">أسئلة</button>
+        </div>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallPromotion();
+        });
+    </script>
+    <script type
