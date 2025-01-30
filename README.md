@@ -1,1 +1,1 @@
-# MynewProject
+# master-combat-bot
